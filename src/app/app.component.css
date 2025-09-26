@@ -1,0 +1,8 @@
+.app-container {
+  min-height: 100vh;
+}
+
+.page-body {
+  display: flex;
+  gap: 20px;
+}

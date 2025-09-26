@@ -1,0 +1,61 @@
+/* Agrega tus estilos aquí */
+.main-header {
+  background: linear-gradient(to right, #d35400, #e67e22);
+  color: white;
+  padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.logo-section h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.download-app {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .logo-section h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .header-content {
+    padding: 0 0.5rem;
+  }
+
+  .logo-section h1 {
+    font-size: 1.3rem;
+  }
+
+  .download-app {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+}

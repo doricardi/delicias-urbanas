@@ -1,0 +1,29 @@
+<nav class="main-nav">
+  <ul class="nav-categories">
+    <!-- SOLUCIÓN: Usar category directamente, no cat.value -->
+    @for (category of categories; track category) {
+    <li>
+      <a
+        href="#"
+        (click)="onSelectCategory(category); $event.preventDefault()"
+        class="nav-link"
+      >
+        {{ category }}
+        <!-- SOLUCIÓN: Usar category, no cat.name -->
+      </a>
+    </li>
+    }
+  </ul>
+
+  <div class="separator">|</div>
+
+  <ul class="nav-pages">
+    @for (page of pages; track page.path) {
+    <li>
+      <a [routerLink]="page.path" routerLinkActive="active">
+        {{ page.label }}
+      </a>
+    </li>
+    }
+  </ul>
+</nav>

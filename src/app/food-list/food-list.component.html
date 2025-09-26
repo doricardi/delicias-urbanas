@@ -1,0 +1,24 @@
+<div class="food-list-container">
+  <h2>{{ currentCategory }}</h2>
+
+  <div class="food-grid">
+    <div class="food-card" *ngFor="let food of filteredFoods">
+      <img
+        [src]="food.imageUrl"
+        [alt]="food.name"
+        class="food-image"
+        (error)="food.imageUrl = '/assets/images/placeholder.jpg'"
+      />
+      <h3>{{ food.name }}</h3>
+      <p class="category">{{ food.category }}</p>
+      <p class="price">Gs. {{ food.price.toLocaleString() }}</p>
+      <button class="add-to-cart" (click)="addToCart(food)">
+        <i class="fas fa-cart-plus"></i> Agregar al Carrito
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="filteredFoods.length === 0" class="no-results">
+    <p>No hay productos en la categoría "{{ currentCategory }}"</p>
+  </div>
+</div>

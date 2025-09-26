@@ -1,0 +1,43 @@
+<div class="about-container">
+  <h2>Sobre Nosotros</h2>
+
+  <div class="about-content">
+    <p>
+      En <strong>Delicias Urbanas</strong>, nos apasiona crear experiencias
+      culinarias únicas que deleiten a nuestros clientes. Desde nuestra
+      fundación en 2010, nos hemos dedicado a ofrecer alimentos de la más alta
+      calidad, preparados con ingredientes frescos y recetas innovadoras.
+    </p>
+
+    <p>
+      Nuestra filosofía se basa en tres pilares fundamentales:
+      <strong>calidad</strong>, <strong>sabor</strong> y
+      <strong>servicio</strong>. Trabajamos incansablemente para superar las
+      expectativas de nuestros clientes y crear platos que no solo alimenten el
+      cuerpo, sino también el alma.
+    </p>
+
+    <p>
+      Todo comenzó con una pequeña cocina y un gran sueño. Hoy, gracias al apoyo
+      de nuestra comunidad, nos hemos convertido en un referente de la comida
+      rápida premium en la ciudad, manteniendo siempre nuestro compromiso con la
+      excelencia.
+    </p>
+  </div>
+
+  <h2>Nuestro Equipo</h2>
+
+  <div class="team">
+    @for (member of teamMembers; track member.name) {
+    <div class="team-member">
+      <div class="team-img">
+        <img [src]="member.image" [alt]="member.name" />
+      </div>
+      <div class="team-info">
+        <h3>{{ member.name }}</h3>
+        <p>{{ member.position }}</p>
+      </div>
+    </div>
+    }
+  </div>
+</div>

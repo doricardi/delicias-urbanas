@@ -1,0 +1,175 @@
+<div class="cart-container">
+  <!-- Botón del carrito -->
+  <button class="cart-toggle" (click)="toggleCart()">
+    <i class="fas fa-cart-plus"></i>
+    <span class="cart-count">{{ getTotalItems() }}</span>
+  </button>
+
+  <!-- Panel del carrito -->
+  <div class="cart-panel" [class.open]="isCartOpen && !isCheckoutOpen">
+    <div class="cart-header">
+      <h3>Tu Carrito</h3>
+      <button class="close-cart" (click)="toggleCart()">×</button>
+    </div>
+
+    <div class="cart-items">
+      <div *ngIf="cartItems.length === 0" class="empty-cart">
+        <i
+          class="fas fa-cart-plus"
+          style="font-size: 3rem; color: #ccc; margin-bottom: 15px"
+        ></i>
+        <p>Tu carrito está vacío</p>
+      </div>
+
+      <div *ngFor="let item of cartItems" class="cart-item">
+        <img
+          [src]="item.food.imageUrl"
+          [alt]="item.food.name"
+          class="item-image"
+        />
+
+        <div class="item-details">
+          <h4>{{ item.food.name }}</h4>
+          <p class="item-price">
+            Gs. {{ item.food.price.toLocaleString() }} c/u
+          </p>
+        </div>
+
+        <div class="quantity-controls">
+          <button (click)="decreaseQuantity(item)">-</button>
+          <span>{{ item.quantity }}</span>
+          <button (click)="increaseQuantity(item)">+</button>
+        </div>
+
+        <button class="remove-item" (click)="removeItem(item.food.name)">
+          ×
+        </button>
+      </div>
+    </div>
+
+    <div class="cart-footer" *ngIf="cartItems.length > 0">
+      <div class="cart-total">
+        <strong>Total: Gs. {{ totalAmount.toLocaleString() }}</strong>
+      </div>
+      <div class="cart-actions">
+        <button class="clear-cart" (click)="clearCart()">Vaciar Carrito</button>
+        <button class="checkout-btn" (click)="openCheckout()">
+          Finalizar Compra
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Checkout -->
+  <div class="checkout-overlay" [class.open]="isCheckoutOpen">
+    <div class="checkout-modal">
+      <div class="checkout-header">
+        <h3>Finalizar Compra</h3>
+        <button class="close-checkout" (click)="closeCheckout()">×</button>
+      </div>
+
+      <div class="checkout-content">
+        <!-- Resumen del pedido -->
+        <div class="order-summary">
+          <h4>Resumen del Pedido</h4>
+          <div *ngFor="let item of cartItems" class="order-item">
+            <span>{{ item.food.name }} x{{ item.quantity }}</span>
+            <span
+              >Gs.
+              {{ (item.food.price * item.quantity).toLocaleString() }}</span
+            >
+          </div>
+          <div class="order-total">
+            <strong>Total: Gs. {{ totalAmount.toLocaleString() }}</strong>
+          </div>
+        </div>
+
+        <!-- Información del cliente -->
+        <div class="customer-info">
+          <h4>Información de Contacto</h4>
+
+          <div class="form-group">
+            <label for="name">Nombre completo *</label>
+            <input
+              type="text"
+              id="name"
+              [(ngModel)]="customerInfo.name"
+              placeholder="Tu nombre completo"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <input
+              type="email"
+              id="email"
+              [(ngModel)]="customerInfo.email"
+              placeholder="tu@email.com"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Teléfono *</label>
+            <input
+              type="tel"
+              id="phone"
+              [(ngModel)]="customerInfo.phone"
+              placeholder="+595 981 123 456"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="address">Dirección de entrega</label>
+            <textarea
+              id="address"
+              [(ngModel)]="customerInfo.address"
+              placeholder="Dirección para la entrega"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Notas adicionales</label>
+            <textarea
+              id="notes"
+              [(ngModel)]="customerInfo.notes"
+              placeholder="Instrucciones especiales"
+              rows="2"
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Método de pago -->
+        <div class="payment-method">
+          <h4>Método de Pago</h4>
+          <div class="payment-options">
+            <label>
+              <input type="radio" name="payment" value="cash" checked />
+              Efectivo al recibir
+            </label>
+            <label>
+              <input type="radio" name="payment" value="card" />
+              Tarjeta de crédito/débito
+            </label>
+            <label>
+              <input type="radio" name="payment" value="transfer" />
+              Transferencia bancaria
+            </label>
+          </div>
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="checkout-actions">
+          <button class="back-to-cart" (click)="closeCheckout()">
+            Volver al Carrito
+          </button>
+          <button class="confirm-purchase" (click)="finalizePurchase()">
+            <i class="fas fa-check"></i> Confirmar Pedido
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
