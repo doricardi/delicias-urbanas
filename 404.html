@@ -1,67 +1,13 @@
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="en" data-beasties-container>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delicias Urbanas - Redirigiendo</title>
-    <base href="/delicias-urbanas/">
-    <script>
-        // Redirección para manejar rutas de Angular
-        (function() {
-            const segment = 1;
-            const l = window.location;
-            
-            // Preservar la ruta original
-            sessionStorage.redirect = l.href;
-            
-            // Redirigir a la aplicación principal
-            const newPath = l.protocol + '//' + l.hostname + 
-                           (l.port ? ':' + l.port : '') +
-                           '/delicias-urbanas/#' +
-                           l.pathname + l.search + l.hash;
-            
-            location.replace(newPath);
-        })();
-    </script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-            background: linear-gradient(135deg, #e67e22, #34495e);
-            color: white;
-        }
-        .loading {
-            font-size: 18px;
-        }
-        .spinner {
-            border: 4px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            border-top: 4px solid white;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
-</head>
+  <meta charset="utf-8">
+  <title>Delicias Urbanas - Comida Rápida & Delivery</title>
+  <base href="/delicias-urbanas/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<style>*{margin:0;padding:0;box-sizing:border-box}html{font-size:16px}body{font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;line-height:1.6;color:#333;background-color:#f9f5f0}@media (max-width: 1200px){html{font-size:15px}}@media (max-width: 768px){html{font-size:14px}}@media (max-width: 480px){html{font-size:13px}}</style><link rel="stylesheet" href="styles-642GKUOR.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-642GKUOR.css"></noscript></head>
 <body>
-    <div class="loading">
-        <h1>Delicias Urbanas</h1>
-        <div class="spinner"></div>
-        <p>Redirigiendo a la aplicación...</p>
-        <p>Si la redirección no funciona, <a href="/delicias-urbanas/" style="color: #fff; text-decoration: underline;">haz click aquí</a>.</p>
-    </div>
-    
-    <script>
-        // Redirección de respaldo después de 3 segundos
-        setTimeout(function() {
-            window.location.href = '/delicias-urbanas/';
-        }, 3000);
-    </script>
-</body>
+  <app-root></app-root>
+<script src="main-EARMR473.js" type="module"></script></body>
 </html>
